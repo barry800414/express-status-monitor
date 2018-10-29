@@ -165,6 +165,7 @@ socket.on('esm_start', function (data) {
   responseTimeStat.textContent = '0.00ms';
   if (lastResponseMetric) {
     responseTimeStat.textContent = lastResponseMetric.mean.toFixed(2) + 'ms';
+    console.log('Response time: ' + responseTimeStat.textContent);
   }
 
   responseTimeChart.data.datasets[0].data = data[defaultSpan].responses.map(function (point) {
@@ -246,6 +247,7 @@ socket.on('esm_stats', function (data) {
     responseTimeStat.textContent = '0.00ms';
     if (responses) {
       responseTimeStat.textContent = responses.mean.toFixed(2) + 'ms';
+      console.log('Response time: ' + responseTimeStat.textContent);
       responseTimeChart.data.datasets[0].data.push(responses.mean);
       responseTimeChart.data.labels.push(responses.timestamp);
     }
